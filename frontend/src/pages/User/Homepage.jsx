@@ -18,22 +18,13 @@ const Homepage = () => {
   const filteredDoctors = doctors.filter((person) =>
     person.fullName.toLowerCase().includes(searchQuery.toLowerCase())
   );
-
   return (
     <>
-      <div className="container-fluid">
-        <div className="row">
-          {/* Navbar */}
-          <div className="col-md-3 col-lg-2">
-            <Navbar />
-          </div>
-
-          <div className="d-flex justify-content-center">
-            <div
-              className="input-group mb-3 mx-auto"
-              style={{ marginTop: 100, maxWidth: "700px" }}
-            >
-              <span className="input-group-text">
+      <div className="container mx-auto">
+        <div className="flex flex-wrap">
+          <div className="flex justify-center w-full">
+            <div className="flex items-center mb-3 mx-auto mt-24 max-w-xl">
+              <span className="input-group-text bg-gray-200 border-none">
                 <FontAwesomeIcon icon={faSearch} />
               </span>
               <input
@@ -41,35 +32,34 @@ const Homepage = () => {
                 placeholder="Search by Name"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="form-control"
+                className="form-control border-none"
               />
             </div>
           </div>
-          <h3 className="text-center">FIND YOUR DOCTOR</h3>
-          <div className="row">
-            <div className="container">
-              <div className="row g-3">
+          <h3 className="text-center w-full">FIND YOUR DOCTOR</h3>
+          <div className="flex flex-wrap justify-center w-full">
+            <div className="container mx-auto">
+              <div className="flex flex-wrap -mx-3">
                 {filteredDoctors.map((person, index) => (
-                  <div className="col-md-3" key={index}>
-                    <div className="card">
+                  <div className="p-3 w-full sm:w-1/2 md:w-1/4" key={index}>
+                    <div className="card bg-white shadow-lg rounded-lg">
                       <img
                         src={person.uploadValidIdUrl}
                         height={300}
                         width={300}
                         alt={person.fullName}
-                        className="mx-auto d-block"
+                        className="h-72 w-full object-cover"
                         style={{ marginTop: 10 }}
                       />
-                      <div className="card-body" style={{ marginLeft: 20 }}>
-                        <h5 className="card-title">{person.fullName}</h5>
-                        <p className="card-text">
-                          {person.qualification}
-                          <br />
+                      <div className="card-body p-4">
+                        <h5 className="card-title text-lg font-semibold">{person.fullName}</h5>
+                        <p className="card-text text-sm">
+                          {person.qualification}<br />
                           {person.servicesOffered}
                         </p>
                         <Link
                           to={`/details/${person._id}`}
-                          className="btn btn-dark"
+                          className="btn btn-dark mt-3 inline-block bg-black text-white py-2 px-4 rounded"
                         >
                           Details
                         </Link>

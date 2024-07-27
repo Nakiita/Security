@@ -1,4 +1,5 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import "./index.css";
 import Homepage from "./pages/User/Homepage";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
@@ -19,16 +20,18 @@ import Users from "./pages/admin/Users";
 import AdminRoutes from "./pages/protected_routes/AdminRoutes";
 import UserRoutes from "./pages/protected_routes/UserRoutes";
 import EmergencyContacts from "./pages/User/EmergencyContacts";
+import Footer from "./components/Footer";
 
 
 function App() {
   return (
     <Router>
       <ToastContainer />
+      <Navbar />
       <Routes>
         <Route path="/login" element={<Login />}></Route>
         <Route path="/register" element={<Register />}></Route>
-        <Route path="/forgotPassword" element={<ForgotPassword />}></Route>
+        <Route path="/forgot-password" element={<ForgotPassword />}></Route>
         <Route
           path="/password/reset/:token"
           element={<ResetPassword />}
@@ -56,9 +59,10 @@ function App() {
         <Route path="/success" element={<Success />} />
         <Route path="/emergency" element={<EmergencyContacts />} />
 
-       
+        <Route path="/footer" element={<Footer />} />
       </Routes>
     </Router>
+    
   );
 }
 export default App;

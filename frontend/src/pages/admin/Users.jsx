@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { deleteUserApi, getAllUsersApi, getPagination } from "../../apis/Api";
+import { deleteUserApi, getPagination } from "../../apis/Api";
 import Sidebar from "../../components/Sidebar";
 import { toast } from "react-toastify";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -9,11 +9,10 @@ const Users = () => {
   const [users, setUsers] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(0);
-  //search query
   const [searchQuery, setSearchQuery] = useState("");
-  //filter
-  const filteredUsers = users.filter((person) =>
-    person.UserName.toLowerCase().includes(searchQuery.toLowerCase())
+
+  const filteredUsers = users.filter((user) =>
+    user.UserName.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
   useEffect(() => {
@@ -41,131 +40,107 @@ const Users = () => {
       }
     });
   };
+
   const handlePageChange = (newPage) => {
     setCurrentPage(newPage);
   };
 
   return (
-    <>
-      <div className="container-fluid">
-        <div className="row">
-          {/* Sidebar */}
-          <div className="col-md-3 col-lg-2">
-            <Sidebar />
-          </div>
-
-          <div className="col-md-9 col-lg-10">
-            <div className="row">
-              <div className="col">
-                <h3 style={{ marginTop: 20 }}>User</h3>
-                <p>Manage the list of users.</p>
-                <div className="d-flex justify-content-center">
-                  <div
-                    className="input-group mb-3 mx-auto"
-                    style={{ maxWidth: "700px" }}
-                  >
-                    <span className="input-group-text">
-                      <FontAwesomeIcon icon={faSearch} />
-                    </span>
-                    <input
-                      type="text"
-                      placeholder="Search by Name"
-                      value={searchQuery}
-                      onChange={(e) => setSearchQuery(e.target.value)}
-                      className="form-control"
-                    />
-                  </div>
-                </div>
-              </div>
-              <table className="table mt-2">
-                <thead className="table-dark">
-                  <tr>
-                    <th>SN</th>
-                    <th>Name</th>
-                    <th>Email</th>
-                    <th>Phone Number</th>
-
-                    <th>Action</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {filteredUsers.map((user, index) => (
-                    <tr key={user._id}>
-                      <td>{index + 1}</td>
-                      <td>{user.UserName}</td>
-                      <td>{user.email}</td>
-                      <td>{user.phoneNumber}</td>
-
-                      <td>
-                        <div className="d-flex">
-                          <button
-                            onClick={() => handleDelete(user._id)}
-                            className="btn btn"
-                          >
-                            <FontAwesomeIcon icon={faTrashAlt} />
-                          </button>
-                        </div>
-                      </td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-          </div>
-          <div className="row">
-            <div className="col">
-              <nav aria-label="Page navigation">
-                <ul className="pagination justify-content-center">
-                  <li
-                    className={`page-item ${
-                      currentPage <= 1 ? "disabled" : ""
-                    }`}
-                  >
-                    <button
-                      className="page-link"
-                      onClick={() => handlePageChange(currentPage - 1)}
-                      aria-label="Previous"
-                    >
-                      &laquo;
-                    </button>
-                  </li>
-                  {Array.from({ length: totalPages }, (_, i) => i + 1).map(
-                    (page) => (
-                      <li
-                        key={page}
-                        className={`page-item ${
-                          currentPage === page ? "active" : ""
-                        }`}
-                      >
-                        <button
-                          className="page-link"
-                          onClick={() => handlePageChange(page)}
-                        >
-                          {page}
-                        </button>
-                      </li>
-                    )
-                  )}
-                  <li
-                    className={`page-item ${
-                      currentPage >= totalPages ? "disabled" : ""
-                    }`}
-                  >
-                    <button
-                      className="page-link"
-                      onClick={() => handlePageChange(currentPage + 1)}
-                      aria-label="Next"
-                    >
-                      &raquo;
-                    </button>
-                  </li>
-                </ul>
-              </nav>
+    <div className="flex">
+      <Sidebar className="w-1/4" />
+      <div className="flex-1 p-6">
+        <div className="mb-6">
+          <h3 className="text-2xl font-semibold mb-2">Users</h3>
+          <p className="text-gray-600">Manage the list of users.</p>
+          <div className="flex justify-center">
+            <div className="flex items-center border rounded w-full max-w-md">
+              <span className="px-3 text-gray-500">
+                <FontAwesomeIcon icon={faSearch} />
+              </span>
+              <input
+                type="text"
+                placeholder="Search by Name"
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                className="flex-1 p-2 outline-none"
+              />
             </div>
           </div>
         </div>
+        <div className="overflow-x-auto">
+          <table className="min-w-full bg-white">
+            <thead className="bg-gray-800 text-white">
+              <tr>
+                <th className="py-2 px-4">SN</th>
+                <th className="py-2 px-4">Name</th>
+                <th className="py-2 px-4">Email</th>
+                <th className="py-2 px-4">Phone Number</th>
+                <th className="py-2 px-4">Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              {filteredUsers.map((user, index) => (
+                <tr key={user._id} className="border-b">
+                  <td className="py-2 px-4">{index + 1}</td>
+                  <td className="py-2 px-4">{user.UserName}</td>
+                  <td className="py-2 px-4">{user.email}</td>
+                  <td className="py-2 px-4">{user.phoneNumber}</td>
+                  <td className="py-2 px-4">
+                    <button
+                      onClick={() => handleDelete(user._id)}
+                      className="text-red-500"
+                    >
+                      <FontAwesomeIcon icon={faTrashAlt} />
+                    </button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        <div className="mt-4">
+          <nav aria-label="Page navigation">
+            <ul className="flex justify-center">
+              <li className={`page-item ${currentPage <= 1 ? "disabled" : ""}`}>
+                <button
+                  className="px-3 py-1 border rounded-l-md bg-gray-200 text-gray-700 hover:bg-gray-300"
+                  onClick={() => handlePageChange(currentPage - 1)}
+                  aria-label="Previous"
+                >
+                  &laquo;
+                </button>
+              </li>
+              {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
+                <li
+                  key={page}
+                  className={`page-item ${currentPage === page ? "active" : ""}`}
+                >
+                  <button
+                    className={`px-3 py-1 border ${currentPage === page ? "bg-gray-700 text-white" : "bg-gray-200 text-gray-700 hover:bg-gray-300"}`}
+                    onClick={() => handlePageChange(page)}
+                  >
+                    {page}
+                  </button>
+                </li>
+              ))}
+              <li
+                className={`page-item ${
+                  currentPage >= totalPages ? "disabled" : ""
+                }`}
+              >
+                <button
+                  className="px-3 py-1 border rounded-r-md bg-gray-200 text-gray-700 hover:bg-gray-300"
+                  onClick={() => handlePageChange(currentPage + 1)}
+                  aria-label="Next"
+                >
+                  &raquo;
+                </button>
+              </li>
+            </ul>
+          </nav>
+        </div>
       </div>
-    </>
+    </div>
   );
 };
 

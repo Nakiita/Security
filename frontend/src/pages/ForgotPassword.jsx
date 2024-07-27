@@ -32,72 +32,62 @@ const ForgetPassword = () => {
   };
 
   return (
-    <>
-      <section class="row min-vh-100 align-items-center">
-        <div class="container py-5 d-flex justify-content-center">
-          <div class="col col-md-10 col-sm-12 col-lg-8">
-            <div class="card d-flex align-items-center shadow-lg">
-              <div class="row">
-                <div class="col-md-6 col-lg-6 order-md-1 order-lg-1 mb-4">
-                  <img
-                    src="https://i.pinimg.com/564x/0e/a5/4e/0ea54e5a470405dfdf3d98bf543460e5.jpg"
-                    alt="login image"
-                    class="img-fluid"
-                    style={{ marginTop: 20 }}
-                  />
+    <div className="flex min-h-screen items-center justify-center">
+      <div className="container flex justify-center py-5">
+        <div className="w-full max-w-4xl">
+          <div className="flex flex-col md:flex-row shadow-lg bg-white rounded-lg overflow-hidden">
+            <div className="md:w-1/2 p-6">
+              <img
+                src="https://i.pinimg.com/564x/0e/a5/4e/0ea54e5a470405dfdf3d98bf543460e5.jpg"
+                alt="Reset password illustration"
+                className="w-full h-full object-cover"
+              />
+            </div>
+            <div className="md:w-1/2 flex flex-col justify-center p-6">
+              <form onSubmit={handleSubmit}>
+                <div className="mb-4 text-center">
+                  <h3 className="text-2xl font-semibold mb-3">Reset Your Password</h3>
+                  <p className="text-gray-600">
+                    Please enter the email address associated with your account, and we will email you a link to reset your password.
+                  </p>
                 </div>
-
-                <div class="col-md-6 col-lg-6 order-lg-3 d-flex align-items-center">
-                  <div class="card-body p-5 p-lg-5 text-black">
-                    <form>
-                      <div class="mb-4 d-flex justify-content-center">
-                        <i class="fas fa-cubes fa-2x me-2"></i>
-                      </div>
-                      <h3 class="fw-bold mb-3 pb-3 d-flex justify-content-center">
-                       Reset Your Password
-                      </h3>
-                      <p className="text-center">
-                        Please enter the email address associated with your
-                        account and We will email you a link to reset your
-                        password.
-                      </p>
-                      {/* Email */}
-                      <div class="form-outline mb-4">
-                        <label class="form-label">Email address</label>
-                        <input
-                          value={forgotPasswordEmail}
-                          onChange={handleForgotPasswordEmail}
-                          type="email"
-                          class="form-control form-control-lg border-2 border-black"
-                        />
-                      </div>
-                      <div class="pt-1 mb-4 d-flex text-center justify-content-center">
-                        <button
-                          onClick={handleSubmit}
-                          className="btn w-50 mb-2 btn btn-dark"
-                          type="button"
-                        >
-                          Send Request
-                        </button>
-                      </div>
-                      <p class="mb-5 pb-lg-2 d-flex justify-content-center">
-                        Back to
-                        <a
-                          href="/login"
-                          class="text-decoration-none text-black fw-semibold"
-                        >
-                          Login
-                        </a>
-                      </p>
-                    </form>
-                  </div>
+                <div className="mb-4">
+                  <label className="block text-gray-700">Email address</label>
+                  <input
+                onChange={forgotPasswordEmail}
+                value={setForgotPasswordEmail}
+                type="text"
+                id="email"
+                name="email"
+                className="mt-1 p-2 w-full border rounded-md focus:border-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-300 transition-colors duration-300"
+              />
                 </div>
-              </div>
+                <div className="flex justify-center">
+                  <button
+                    onClick={handleSubmit}
+                    className="btn w-full bg-black text-white py-2 px-4 rounded hover:bg-gray-800"
+                    type="button"
+                  >
+                    Send Request
+                  </button>
+                </div>
+                <div className="mt-4 text-center">
+                  <p className="text-gray-600">
+                    Back to{" "}
+                    <a
+                      href="/login"
+                      className="text-blue-500 hover:underline"
+                    >
+                      Login
+                    </a>
+                  </p>
+                </div>
+              </form>
             </div>
           </div>
         </div>
-      </section>
-    </>
+      </div>
+    </div>
   );
 };
 

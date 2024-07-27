@@ -1,11 +1,6 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-  faFacebook,
-  faInstagram,
-  faGithub,
-} from "@fortawesome/free-brands-svg-icons";
-import {
   faBookMedical,
   faHospital,
   faProcedures,
@@ -14,425 +9,247 @@ import {
   faUserDoctor,
 } from "@fortawesome/free-solid-svg-icons";
 import Navbar from "../../components/Navbar";
+import Footer from "../../components/Footer";
 
 const UserDashboard = () => {
-
   return (
-    <>
-      <div className="container-fluid">
-        <div className="row">
-          {/* Sidebar */}
-          <div className="col-md-3 col-lg-2">
-            <Navbar />
-          </div>
-          {/* <!-- Home Section Start --> */}
-          <section class="main-content bg-yellow" id="home">
-            <div class="container">
-              <div class="row min-vh-100 align-items-center text-center text-md-left">
-                <div class="col-md-6 pr-md-5" data-aos="zoom-in">
-                  <img
-                    src="../assets/images/home-img.svg"
-                    class="img-fluid"
-                    alt=""
-                    style={{
-                      borderRadius: "8px",
-                      transition: "transform 0.3s ease-in-out",
-                    }}
-                    onMouseOver={(e) =>
-                      (e.currentTarget.style.transform = "scale(1.1)")
-                    }
-                    onMouseOut={(e) =>
-                      (e.currentTarget.style.transform = "scale(1)")
-                    }
-                  />
-                </div>
-
-                <div class="col-md-6 pl-md-5 content" data-aos="fade-left">
-                  <h1>
-                    <span>Stay</span> safe, <span>stay</span> healthy.
-                  </h1>
-                  <h3>Caring for you.</h3>
-                  <a href="/login" class="btn btn-primary">
-                    Learn More
-                  </a>
-                </div>
+    <div className="min-h-screen flex flex-col">
+      <div className="flex flex-row flex-grow">
+        <div className="flex-grow">
+          {/* Home Section */}
+          <section className="bg-400 py-10" id="home">
+            <div className="container mx-auto flex flex-wrap items-center justify-center text-center md:text-left">
+              <div className="w-full md:w-1/2 p-5" data-aos="zoom-in">
+                <img
+                  src="../assets/images/home-img.svg"
+                  className="rounded-lg transition-transform duration-300 ease-in-out transform hover:scale-110"
+                  alt=""
+                />
+              </div>
+              <div className="w-full md:w-1/2 p-5" data-aos="fade-left">
+                <h1 className="text-3xl font-bold">
+                  <span className="text-blue-700">Stay</span> safe,{" "}
+                  <span className="text-blue-700">stay</span> healthy.
+                </h1>
+                <h3 className="text-xl my-4">Caring for you.</h3>
+                <a href="/login" className="btn btn-primary">
+                  Learn More
+                </a>
               </div>
             </div>
           </section>
-          {/* <!-- Home Section End --> */}
 
-          {/* <!-- About Section Start --> */}
-          <section className="bg-light" id="about">
-            <div className="container">
-              <div className="row min-vh-100 align-items-center">
-                <div className="col-md-6  content " data-aos="fade-right">
-                  <div className="card mb-4">
-                    <div className="card-body">
-                      <h3 className="card-title">
-                        <FontAwesomeIcon icon={faUserDoctor} /> Doctor's Details
-                      </h3>
-                      <p className="card-text">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                        Eaque, quis.
-                      </p>
-                    </div>
-                  </div>
-
-                  <div className="card mb-4">
-                    <div className="card-body">
-                      <h3 className="card-title">
-                        <FontAwesomeIcon icon={faProcedures} /> Emergency Rooms
-                      </h3>
-                      <p className="card-text">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                        Eaque, quis.
-                      </p>
-                    </div>
-                  </div>
-
-                  <div className="card">
-                    <div className="card-body">
-                      <h3 className="card-title">
-                        <FontAwesomeIcon icon={faBookMedical} /> Booking
-                        Appointments
-                      </h3>
-                      <p className="card-text">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                        Eaque, quis.
-                      </p>
-                    </div>
-                  </div>
+          {/* About Section */}
+          <section className="bg-gray-100 py-10" id="about">
+            <div className="container mx-auto flex flex-wrap items-center justify-center">
+              <div className="w-full md:w-1/2 p-5" data-aos="fade-right">
+                <div className="card mb-4 p-5 bg-white shadow-lg">
+                  <h3 className="text-2xl font-semibold mb-2">
+                    <FontAwesomeIcon icon={faUserDoctor} /> Doctor's Details
+                  </h3>
+                  <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Eaque, quis.
+                  </p>
                 </div>
 
-                <div
-                  className="col-md-6 d-none d-md-block"
-                  data-aos="fade-left"
-                >
-                  <img
-                    src="../assets/images/option.png"
-                    className="img-fluid"
-                    alt=""
-                  />
+                <div className="card mb-4 p-5 bg-white shadow-lg">
+                  <h3 className="text-2xl font-semibold mb-2">
+                    <FontAwesomeIcon icon={faProcedures} /> Emergency Rooms
+                  </h3>
+                  <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Eaque, quis.
+                  </p>
                 </div>
+
+                <div className="card p-5 bg-white shadow-lg">
+                  <h3 className="text-2xl font-semibold mb-2">
+                    <FontAwesomeIcon icon={faBookMedical} /> Booking
+                    Appointments
+                  </h3>
+                  <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Eaque, quis.
+                  </p>
+                </div>
+              </div>
+              <div
+                className="w-full md:w-1/2 p-5 hidden md:block"
+                data-aos="fade-left"
+              >
+                <img
+                  src="../assets/images/option.png"
+                  className="w-full rounded-lg"
+                  alt=""
+                />
               </div>
             </div>
           </section>
-          {/* <!-- About Section End -->
 
-    <!-- Facility Section Start --> */}
-          <section class="facility" id="facility">
-            <div class="container">
-              <h1 class="heading">
+          {/* Facility Section */}
+          <section className="py-10 bg-white" id="facility">
+            <div className="container mx-auto">
+              <h1 className="text-4xl font-bold text-center mb-10">
                 <span>'</span> Our Facilities <span>'</span>
               </h1>
-              {/* Image 1 */}
-              <div class="row">
-                <div class="col-md-4 mb-4" data-aos="zoom-in">
+              <div className="flex flex-wrap justify-center">
+                {/* Image 1 */}
+                <div className="w-full sm:w-1/2 md:w-1/3 p-4" data-aos="zoom-in">
                   <a
                     href="../assets/facilities_images/img1.jpg"
+                    className="block"
                     title="Our Clinic"
-                    class="popup-link"
                   >
                     <img
                       src="../assets/facilities_images/img1.jpg"
-                      class="img-fluid"
+                      className="rounded-lg transition-transform duration-300 ease-in-out transform hover:scale-110 w-full"
                       alt=""
-                      style={{
-                        borderRadius: "8px",
-                        transition: "transform 0.3s ease-in-out",
-                      }}
-                      onMouseOver={(e) =>
-                        (e.currentTarget.style.transform = "scale(1.1)")
-                      }
-                      onMouseOut={(e) =>
-                        (e.currentTarget.style.transform = "scale(1)")
-                      }
                     />
                   </a>
                 </div>
                 {/* Image 2 */}
-                <div class="col-md-4 mb-4" data-aos="zoom-in">
+                <div className="w-full sm:w-1/2 md:w-1/3 p-4" data-aos="zoom-in">
                   <a
                     href="../assets/facilities_images/img2.jpg"
+                    className="block"
                     title="Our Clinic"
-                    class="popup-link"
                   >
                     <img
                       src="../assets/facilities_images/img2.jpg"
-                      class="img-fluid"
+                      className="rounded-lg transition-transform duration-300 ease-in-out transform hover:scale-110 w-full"
                       alt=""
-                      style={{
-                        borderRadius: "8px",
-                        transition: "transform 0.3s ease-in-out",
-                      }}
-                      onMouseOver={(e) =>
-                        (e.currentTarget.style.transform = "scale(1.1)")
-                      }
-                      onMouseOut={(e) =>
-                        (e.currentTarget.style.transform = "scale(1)")
-                      }
                     />
                   </a>
                 </div>
                 {/* Image 3 */}
-                <div class="col-md-4 mb-4" data-aos="zoom-in">
+                <div className="w-full sm:w-1/2 md:w-1/3 p-4" data-aos="zoom-in">
                   <a
                     href="../assets/facilities_images/img3.jpg"
+                    className="block"
                     title="Our Clinic"
-                    class="popup-link"
                   >
                     <img
                       src="../assets/facilities_images/img3.jpg"
-                      class="img-fluid"
+                      className="rounded-lg transition-transform duration-300 ease-in-out transform hover:scale-110 w-full"
                       alt=""
-                      style={{
-                        borderRadius: "8px",
-                        transition: "transform 0.3s ease-in-out",
-                      }}
-                      onMouseOver={(e) =>
-                        (e.currentTarget.style.transform = "scale(1.1)")
-                      }
-                      onMouseOut={(e) =>
-                        (e.currentTarget.style.transform = "scale(1)")
-                      }
                     />
                   </a>
                 </div>
                 {/* Image 4 */}
-                <div class="col-md-4 mb-4" data-aos="zoom-in">
+                <div className="w-full sm:w-1/2 md:w-1/3 p-4" data-aos="zoom-in">
                   <a
                     href="../assets/facilities_images/img4.jpg"
+                    className="block"
                     title="Our Clinic"
-                    class="popup-link"
                   >
                     <img
                       src="../assets/facilities_images/img4.jpg"
-                      class="img-fluid"
+                      className="rounded-lg transition-transform duration-300 ease-in-out transform hover:scale-110 w-full"
                       alt=""
-                      style={{
-                        borderRadius: "8px",
-                        transition: "transform 0.3s ease-in-out",
-                      }}
-                      onMouseOver={(e) =>
-                        (e.currentTarget.style.transform = "scale(1.1)")
-                      }
-                      onMouseOut={(e) =>
-                        (e.currentTarget.style.transform = "scale(1)")
-                      }
                     />
                   </a>
                 </div>
                 {/* Image 5 */}
-                <div class="col-md-4 mb-4" data-aos="zoom-in">
+                <div className="w-full sm:w-1/2 md:w-1/3 p-4" data-aos="zoom-in">
                   <a
                     href="../assets/facilities_images/img5.jpg"
+                    className="block"
                     title="Our Clinic"
-                    class="popup-link"
                   >
                     <img
                       src="../assets/facilities_images/img5.jpg"
-                      class="img-fluid"
+                      className="rounded-lg transition-transform duration-300 ease-in-out transform hover:scale-110 w-full"
                       alt=""
-                      style={{
-                        borderRadius: "8px",
-                        transition: "transform 0.3s ease-in-out",
-                      }}
-                      onMouseOver={(e) =>
-                        (e.currentTarget.style.transform = "scale(1.1)")
-                      }
-                      onMouseOut={(e) =>
-                        (e.currentTarget.style.transform = "scale(1)")
-                      }
                     />
                   </a>
                 </div>
                 {/* Image 6 */}
-                <div class="col-md-4 mb-4" data-aos="zoom-in">
+                <div className="w-full sm:w-1/2 md:w-1/3 p-4" data-aos="zoom-in">
                   <a
                     href="../assets/facilities_images/img6.jpg"
+                    className="block"
                     title="Our Clinic"
-                    class="popup-link"
                   >
                     <img
                       src="../assets/facilities_images/img6.jpg"
-                      class="img-fluid"
+                      className="rounded-lg transition-transform duration-300 ease-in-out transform hover:scale-110 w-full"
                       alt=""
-                      style={{
-                        borderRadius: "8px",
-                        transition: "transform 0.3s ease-in-out",
-                      }}
-                      onMouseOver={(e) =>
-                        (e.currentTarget.style.transform = "scale(1.1)")
-                      }
-                      onMouseOut={(e) =>
-                        (e.currentTarget.style.transform = "scale(1)")
-                      }
                     />
                   </a>
                 </div>
               </div>
             </div>
           </section>
-          {/* <!-- Facility Section End -->
 
-    <!-- Counter Section Start --> */}
-          <section className="counter " style={{ backgroundColor: "#808080" }}>
-            <div className="container">
-              <div className="row">
-                <div className="col-md-3 mb-4" data-aos="fade-up">
-                  <FontAwesomeIcon icon={faHospital} />
-                  <span>120+</span>
-                  <h3>Hospitals</h3>
+          {/* Counter Section */}
+          <section className="bg-gray-800 text-white py-10">
+            <div className="container mx-auto">
+              <div className="flex flex-wrap text-center">
+                <div className="w-full md:w-1/4 p-5" data-aos="fade-up">
+                  <FontAwesomeIcon icon={faHospital} className="text-5xl mb-2" />
+                  <span className="text-3xl font-bold">120+</span>
+                  <h3 className="text-xl">Hospitals</h3>
                 </div>
-
-                <div className="col-md-3" data-aos="fade-up">
-                  <FontAwesomeIcon icon={faUser} />
-                  <span>100+</span>
-                  <h3>Staffs</h3>
+                <div className="w-full md:w-1/4 p-5" data-aos="fade-up">
+                  <FontAwesomeIcon icon={faUser} className="text-5xl mb-2" />
+                  <span className="text-3xl font-bold">100+</span>
+                  <h3 className="text-xl">Staffs</h3>
                 </div>
-
-                <div className="col-md-3" data-aos="fade-up">
-                  <FontAwesomeIcon icon={faSmile} />
-                  <span>1200+</span>
-                  <h3>Patients</h3>
+                <div className="w-full md:w-1/4 p-5" data-aos="fade-up">
+                  <FontAwesomeIcon icon={faSmile} className="text-5xl mb-2" />
+                  <span className="text-3xl font-bold">1200+</span>
+                  <h3 className="text-xl">Patients</h3>
                 </div>
-
-                <div className="col-md-3" data-aos="fade-up">
-                  <FontAwesomeIcon icon={faProcedures} />
-                  <span>130+</span>
-                  <h3>Bed Facilities</h3>
+                <div className="w-full md:w-1/4 p-5" data-aos="fade-up">
+                  <FontAwesomeIcon icon={faProcedures} className="text-5xl mb-2" />
+                  <span className="text-3xl font-bold">130+</span>
+                  <h3 className="text-xl">Bed Facilities</h3>
                 </div>
               </div>
             </div>
           </section>
-          {/* <!-- Counter Section End -->
 
-    <!-- Contact Section Start --> */}
-          <section className="contact bg-light" id="contact">
-            <div className="container">
-              <div className="row min-vh-100 align-items-center">
-                <div className="col-md-6  content " data-aos="fade-right">
-                  <div className="card-body shadow-sm p-3 mb-5 bg-body rounded">
-                    <h3 className="card-title">Get In Touch</h3>
-                    <p className="card-text">
+          {/* Contact Section */}
+          <section className="bg-gray-100 py-10" id="contact">
+            <div className="container mx-auto">
+              <div className="flex flex-wrap items-center justify-center min-h-screen">
+                <div className="w-full md:w-1/2 p-5" data-aos="fade-right">
+                  <div className="bg-white p-6 shadow-lg rounded-lg">
+                    <h3 className="text-2xl font-semibold">Get In Touch</h3>
+                    <p className="mt-4">
                       Whether you’re interested in a live product demonstration
                       or just want to learn more about our products, don’t
                       hesitate to reach out. Our friendly and knowledgeable team
-                      are always more than happy to lend a hand.
+                      is always more than happy to lend a hand.
                     </p>
                   </div>
-                  <div className="contact-details">
-                    <div className="email">
-                      <h3>Email:</h3>
+                  <div className="mt-8">
+                    <div className="mb-4">
+                      <h3 className="text-xl font-semibold">Email:</h3>
                       <p>info@example.com</p>
                     </div>
-
-                    <div className="phone">
-                      <h3>Contact:</h3>
+                    <div>
+                      <h3 className="text-xl font-semibold">Contact:</h3>
                       <p>+977 9876543231</p>
                     </div>
                   </div>
                 </div>
-                <div
-                  className="col-md-6 d-none d-md-block"
-                  data-aos="fade-left"
-                >
+                <div className="w-full md:w-1/2 p-5 hidden md:block" data-aos="fade-left">
                   <img
                     src="../assets/images/home.png"
-                    className="img-fluid"
+                    className="w-full rounded-lg"
                     alt=""
                   />
                 </div>
               </div>
             </div>
           </section>
+          <Footer />
 
-          {/* <!-- Contact Section End -->
-
-    
-
-    <!-- Footer Section Start --> */}
-          <section class="footer bg-dark text-light">
-            <div class="container">
-              <div class="row">
-                <div class="col-md-4">
-                  <a href="#" class="navbar-brand">
-                    <img
-                      src="../assets/images/logo.png"
-                      style={{
-                        width: "80px",
-                        marginLeft: "-100px",
-                      }}
-                    />
-                  </a>
-                  <p>
-                    Health Care website is a vital online platform, offering
-                    medical information, appointment scheduling, to enhance
-                    health literacy, communication between patients and
-                    healthcare providers, and overall patient-centered wellness.
-                  </p>
-                </div>
-
-                <div
-                  class="col-md-4 text-center aos-init aos-animate"
-                  data-aos="fade-up"
-                >
-                  <h3 class="me-3">Links</h3>
-                  <div class="row">
-                    <a href="/" class="text-decoration-none text-white">
-                      Home
-                    </a>
-
-                    <a href="#about" class="text-decoration-none text-white">
-                      About
-                    </a>
-
-                    <a href="#facility" class="text-decoration-none text-white">
-                      Facility
-                    </a>
-
-                    <a href="#contact" class="text-decoration-none text-white">
-                      Contact
-                    </a>
-                  </div>
-                </div>
-
-                <div
-                  class="col-md-4 text-center aos-init aos-animate"
-                  data-aos="fade-left"
-                >
-                  <h3>Share</h3>
-                  <div className="row">
-                    <a
-                      href="https://www.facebook.com"
-                      class="text-decoration-none text-white"
-                    >
-                      <FontAwesomeIcon icon={faFacebook} /> Facebook
-                    </a>
-                    <a
-                      href="https://www.instagram.com"
-                      class="text-decoration-none text-white"
-                    >
-                      <FontAwesomeIcon icon={faInstagram} /> Instagram
-                    </a>
-                    <a
-                      href="https://www.github.com/"
-                      class="text-decoration-none text-white"
-                    >
-                      <FontAwesomeIcon icon={faGithub} /> GitHub
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <h1 class="credit text-center mx-auto">
-              Created by <span>Health Care</span> | All Rights Reserved.
-            </h1>
-          </section>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

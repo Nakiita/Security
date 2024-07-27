@@ -11,102 +11,81 @@ const Sidebar = () => {
     navigate("/login");
     window.location.reload();
   };
+
   return (
-    <>
-      <div
-        className="fixed-top d-flex flex-column flex-shrink-0 p-3 bg-light"
-        style={{
-          height: "100vh",
-          width: "250px",
-          top: 0,
-          left: 0,
-          overflow: "hidden",
-          borderBottom: "1px solid #dee2e6",
-        }}
-      >
-        <a
-          href="/admin"
-          className="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none"
+    <div className="fixed top-0 left-0 h-full w-34 bg-gray-100 shadow-md flex flex-col">
+      <div className="flex items-center justify-center py-4">
+        <Link to="/admin" className="text-xl font-semibold text-blue-600">
+          HEALTH CARE
+        </Link>
+      </div>
+      <nav className="flex flex-col mt-6 space-y-2 text-lg font-semibold">
+        <Link
+          to="/admin"
+          className="px-4 py-2 hover:bg-gray-200 transition duration-200"
         >
-          <span className="fs-4 d-flex" style={{ color: "blue" }}>
-            HEALTH CARE
-          </span>
-        </a>
-
-        <ul
-          className="nav nav-pills flex-column mb-auto"
-          style={{ fontWeight: "bold", marginTop: "50px" }}
+          DOCTOR
+        </Link>
+        <Link
+          to="/admin/appointments"
+          className="px-4 py-2 hover:bg-gray-200 transition duration-200"
         >
-          <li>
-            <a
-              href="/admin"
-              className="nav-link link-dark"
-              style={{ marginBottom: "20px" }}
-            >
-              DOCTOR
-            </a>
-          </li>
-          <li>
-            <a
-              href="/admin/appointments"
-              className="nav-link link-dark"
-              style={{ marginBottom: "20px" }}
-            >
-              APPOINTMENT
-            </a>
-          </li>
-          <li>
-            <a href="/admin/users" className="nav-link link-dark">
-              USER
-            </a>
-          </li>
-        </ul>
-
-        <div className="dropdown">
-          <a
-            href="#"
-            className="d-flex align-items-center link-dark text-decoration-none dropdown-toggle"
-            id="dropdownUser2"
-            data-bs-toggle="dropdown"
-            aria-expanded="false"
-            style={{ color: "#212529", textDecoration: "none" }} // Dark text color and remove default link underline
+          APPOINTMENT
+        </Link>
+        <Link
+          to="/admin/users"
+          className="px-4 py-2 hover:bg-gray-200 transition duration-200"
+        >
+          USER
+        </Link>
+      </nav>
+      <div className="mt-auto mb-4 px-4">
+        <div className="relative inline-block text-left">
+          <button
+            type="button"
+            className="flex items-center text-gray-700 hover:text-gray-900 transition duration-200"
+            aria-haspopup="true"
+            aria-expanded="true"
           >
             <img
               src="../assets/images/logo.png"
-              alt=""
-              width="32"
-              height="32"
-              className="rounded-circle me-2"
+              alt="HC"
+              className="w-8 h-8 rounded-full mr-2"
             />
             <strong>HC</strong>
-          </a>
-          <ul class="dropdown-menu">
-            <li>
+            <svg
+              className="ml-2 w-4 h-4"
+              fill="currentColor"
+              viewBox="0 0 20 20"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                fillRule="evenodd"
+                d="M5.23 7.21a.75.75 0 011.06.02L10 10.94l3.71-3.71a.75.75 0 011.06 1.06l-4 4a.75.75 0 01-1.06 0l-4-4a.75.75 0 01-.02-1.06z"
+                clipRule="evenodd"
+              />
+            </svg>
+          </button>
+          <div className="absolute right-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5">
+            <div className="py-1">
               <Link
-                class="dropdown-item"
                 to="/forgotPassword"
-                style={{ color: "blue" }}
+                className="block px-4 py-2 text-sm text-blue-600 hover:bg-gray-100"
               >
                 CHANGE PASSWORD
               </Link>
-            </li>
-            <li>
               <button
                 onClick={handleLogout}
-                class="dropdown-item"
-                style={{ color: "#dc3545" }}
+                className="w-full text-left px-4 py-2 text-sm text-red-500 hover:bg-gray-100 flex items-center"
               >
-                <FontAwesomeIcon
-                  icon={faSignOut}
-                  style={{ marginRight: "0.5rem" }}
-                />
+                <FontAwesomeIcon icon={faSignOut} className="mr-2" />
                 LOGOUT
               </button>
-            </li>
-          </ul>
+            </div>
+          </div>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 
